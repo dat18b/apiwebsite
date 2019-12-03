@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<form >
+    <textarea  name="content" > </textarea>
+    <input type="submit">
+</form>
+
+<script>
+
+    $("form").on("submit", function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:8080/posts",
+            data: $(this).serialize()
+        })
+            .done(function (msg) {
+                alert("Data Saved: " + msg);
+            });
+
+    })
+
+</script>
+</body>
+</html>

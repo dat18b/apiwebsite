@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Blog</h1>
+
+<div id="content"></div>
+<div id="content_2"></div>
+
+
+<script>
+    $.ajax({
+        url: 'http://localhost:8080/posts',
+        method: 'get'
+
+    }).done(function (data) {
+
+        for(var i = 0; i < data.length; i++){
+             $('#content').append(data[i].content)
+            for(var j = 0; j < data[i].comment.length; j++){
+                $('#content_2').append(data[i].comment[j].content)
+            }
+
+        }
+
+
+    })
+
+</script>
+</body>
+</html>
